@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cowboy Bebop Db (CBDb)
 
-## Getting Started
+This is a fun R&D project made with the purpose to practice web layouts as well as RESTful APIs.
 
-First, run the development server:
+Layouts are inspired by both [Line Animation Studio](https://thelinestudio.com/work/cowboy-bebop) for the Home page, and [Sturdy](https://sturdy.co/) for the Session(s) page(s).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Things to fix
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Session - header font size responsiveness
+- Home page video optimization (Mux? Blob?)
+- Remove credits page
+- Info - remove "Downloads" header (?)
+- Session - fix display for staff with multiple positions (?)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Todo
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Session - add buttons for prev / next episode
+- Sessions - scroll to top visibility animation
 
-## Learn More
+## Future plans
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Gallery lightbox
+- Music player (?)

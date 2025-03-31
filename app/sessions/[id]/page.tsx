@@ -1,0 +1,182 @@
+import { GetWikiExtract } from "@/lib/getData";
+import Image from "next/image";
+import wtf from "wtf_wikipedia";
+import { episodeMatch } from "@/utils/matchData";
+// import { memo } from "react";
+import CreditsSection from "@/app/components/SessionPage/CreditsSection";
+import MusicSection from "@/app/components/SessionPage/MusicSection";
+import GallerySection from "@/app/components/SessionPage/GallerySection";
+import { EpisodeMatch } from "@/utils/types";
+
+// import { WikiTextParser } from "parse-wikitext";
+
+// interface Episode {
+//   mal_id: number;
+//   title: string;
+//   aired: Date;
+//   synopsis: string;
+//   url: string;
+// }
+
+// export default function Page({ params }: { params: Promise<{ id: string }> }) {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  // console.log(id);
+  const decodedId = decodeURI(id);
+  // const lowercaseId = decodedId.toLowerCase();
+  // console.log(lowercaseId);
+
+  // FIXME: url is case sensitive and doesn't display pages with differing cases
+
+  // get the number of current episode
+  const matches = (item: EpisodeMatch) => item.title === decodeURI(id);
+  const epIndex = episodeMatch.findIndex(matches);
+  const epNum = epIndex + 1;
+  // console.log(epNum);
+
+  // function wikiNameFix(epName) {
+  //   const fixesArr = [
+  //     {
+  //       original: "Waltz for Venus",
+  //       fixed: "Waltz For Venus",
+  //     },
+  //     {
+  //       original: "Jamming with Edward",
+  //       fixed: "Jamming With Edward",
+  //     },
+  //     {
+  //       original: "Toys in the Attic",
+  //       fixed: "Toys In The Attic",
+  //     },
+  //     {
+  //       original: "Speak Like a Child",
+  //       fixed: "Speak Like A Child",
+  //     },
+  //     {
+  //       original: "Pierrot le Fou",
+  //       fixed: "Pierrot Le Fou",
+  //     },
+  //   ];
+  //   const decodedName = decodeURI(epName);
+  //   const foundEpName = fixesArr.find(
+  //     ({ original }) => original === decodedName
+  //   );
+  //   const matches = (item) => item.original === decodedName;
+  //   const index = fixesArr.findIndex(matches);
+  //   // console.log(foundEpName);
+
+  //   if (decodedName === foundEpName?.original) {
+  //     return fixesArr[index].fixed;
+  //   } else {
+  //     return decodedName;
+  //   }
+  // }
+  // const fixedname = wikiNameFix(id);
+  // console.log(fixedname);
+  // console.log(`fixedname: ${fixedname}`);
+
+  // fetched to get synopsis
+  const jikanData = await fetch(
+    `https://api.jikan.moe/v4/anime/1/episodes/${epNum}`,
+    {
+      cache: "force-cache",
+    }
+  );
+  const jikanEpJson = await jikanData.json();
+  const { synopsis } = jikanEpJson.data;
+  // console.log(jikanEpJson);
+
+  // fetches fandom wiki data
+  const wikiEpisodeData = await GetWikiExtract(id);
+  const { title } = wikiEpisodeData;
+  const infoBoxObject = JSON.parse(wikiEpisodeData.properties.infoboxes);
+  // .at(-1) returns the last index of the array
+  const airDate = infoBoxObject[0].data.at(-1).data.value;
+  // console.log(infoBoxObject);
+  // const encodedQuery = encodeURI(id);
+
+  const sessionImage = infoBoxObject[0].data[1].data[0].url;
+  const sessionImageAltText = infoBoxObject[0].data[1].data[0].alt;
+  // console.log(sessionImage);
+
+  // const parsedText = WikiTextParser.pageToSectionObject(text);
+  // console.log(parsedText);
+
+  // const doc = await wtf.fetch("Toronto Raptors");
+  // const coach = doc?.infobox().get("division");
+  // console.log(coach.text());
+
+  // fixes "jamming with edward" fetch returning null | 'W' needs to be uppercase
+  // FIXME: check pierrot le fou url
+  const wtfIdFix =
+    id == "Jamming%20with%20Edward" ? "Jamming%20With%20Edward" : id;
+  const doc = await wtf.fetch(
+    `https://cowboybebop.fandom.com/wiki/${wtfIdFix}`
+  );
+  // console.log(doc);
+  // const sec = doc?.section("Credits").text();
+  // const credits = doc?.section("Credits").json();
+  // doc = await wtf.fetch("Asteroid Blues");
+  // const info = doc?.infobox().get("Original Airdate");
+  // console.log(credits);
+  // const writer = credits.lists[0][0].text;
+  // const cast = credits.lists[1];
+
+  const songsJson = doc?.section("Songs").json();
+  const songs = songsJson.lists[0];
+  // console.log(songsJson);
+
+  // for(let i  = 0 ; i < characterEpisodesList.length ; i++) {
+  //   characterEpisodesList[i].episodes.includes(epNum)
+  // }
+
+  // const isInEpisode = characterEpisodesList.includes(24);
+  // const firstName = doc?.section("Credits").text();
+  // const match = (item) => item.episodes === epNum;
+  // const epIndex = episodeMatch.findIndex(matches);
+  // console.log(cast);
+  // console.log(credits);
+
+  return (
+    <main className="mt-20">
+      {/* <div className="top-section grid grid-cols-4 gap-x-4 mb-8"> */}
+      {/* <div className="top-section grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-rows-1 md:grid-rows-2 gap-4 mb-8"> */}
+      <div className="top-section grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-rows-1 md:auto-rows-min gap-4 mb-8">
+        <div className="episode-image col-start-1 col-end-2">
+          <Image
+            src={sessionImage}
+            alt={sessionImageAltText}
+            width={621}
+            height={477}
+          />
+        </div>
+        <div className="lg:col-start-2 lg:col-end-5 md:col-start-2 md:col-end-3 sm:col-start-1 sm:col-end-2">
+          <h1 className="text-3xl">{title}</h1>
+          {/* <h1 className="text-3xl">title</h1> */}
+          {/* <p className="text-sm text-neutral-600">
+            {new Date(aired).toISOString().split("T00:00:00.000Z")}
+          </p> */}
+          <p className="text-neutral-600 mb-3">Air Date: {airDate}</p>
+          <p className="text-sm mb-3">{synopsis}</p>
+          <div className="block md:hidden lg:block">
+            <CreditsSection epNum={epNum} />
+          </div>
+        </div>
+        <div className="hidden md:block lg:hidden col-start-1 col-span-full">
+          <CreditsSection epNum={epNum} />
+        </div>
+        {/* <div className="col-start-2 col-end-4">
+          directors writers japanese cast english cast
+        </div> */}
+      </div>
+      <div className="bottom-section grid md:grid-cols-2 grid-cols-1 gap-5">
+        <MusicSection songs={songs} />
+        <GallerySection title={decodedId} />
+      </div>
+    </main>
+  );
+}
