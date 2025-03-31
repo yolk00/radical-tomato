@@ -21,3 +21,7 @@ Layouts are inspired by both [Line Animation Studio](https://thelinestudio.com/w
 
 - Gallery lightbox
 - Music player (?)
+
+![CBDb Home page](public/cbdb_home.png)
+![CBDb Sessions page](public/cbdb_sessions.png)
+![CBDb Session page](public/cbdb_session.png)
