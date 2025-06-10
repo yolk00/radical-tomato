@@ -126,8 +126,8 @@ export default async function Page({
   // const writer = credits.lists[0][0].text;
   // const cast = credits.lists[1];
 
-  const songsJson = doc?.section("Songs").json();
-  const songs = songsJson.lists[0];
+  // const songsJson = doc?.section("Songs").json();
+  // const songs = songsJson.lists[0];
   // console.log(songsJson);
 
   // for(let i  = 0 ; i < characterEpisodesList.length ; i++) {
@@ -174,7 +174,8 @@ export default async function Page({
         </div> */}
       </div>
       <div className="bottom-section grid md:grid-cols-2 grid-cols-1 gap-5">
-        <MusicSection songs={songs} />
+        {/* <MusicSection songs={songs} epNum={epNum} /> */}
+        <MusicSection epNum={epNum} />
         <GallerySection title={decodedId} />
       </div>
     </main>
