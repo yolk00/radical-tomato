@@ -11,6 +11,7 @@ Layouts are inspired by both [Line Animation Studio](https://thelinestudio.com/w
 - Remove credits page
 - Info - remove "Downloads" header (?)
 - Session - fix display for staff with multiple positions (?)
+- Session - small music player bugs
 
 ## Todo
 
@@ -19,9 +20,9 @@ Layouts are inspired by both [Line Animation Studio](https://thelinestudio.com/w
 
 ## Future plans
 
+- Animations (?)
 - Gallery lightbox
-- Music player (?)
 
 ![CBDb Home page](public/cbdb_home.png)
 ![CBDb Sessions page](public/cbdb_sessions.png)
-![CBDb Session page](public/cbdb_session.png)
+![CBDb Session page](public/cbdb_session_ab.png)
