@@ -13,10 +13,10 @@ const navLinks = [
     name: "Info",
     link: "/info",
   },
-  {
-    name: "Credits",
-    link: "/credits",
-  },
+  // {
+  //   name: "Credits",
+  //   link: "/credits",
+  // },
 ];
 
 export default function Navbar() {

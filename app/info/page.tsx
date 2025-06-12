@@ -46,39 +46,55 @@ export default function Page() {
       </h1>
       <div>
         {/* <h2>About CBDb</h2> */}
-        <p>
-          The CBDb was made as a fun side project for yolk00 to practice her web
-          development skills.
-        </p>
-        <p>
-          All content on this site is owned by their respective copyright
-          owners.
-        </p>
-        <p>
-          Here are more Cowboy Bebop resources for you to look into if you
-          enjoyed this site!
-        </p>
-        <h2 className="font-bold text-2xl">Downloads</h2>
-        <h2 className="font-bold text-2xl">Fansite Links</h2>
-        <ul className="">
-          {fansiteLinks.map((item, i) => (
-            <li key={i}>
-              <a href={item.url} target="_blank" className="">
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <h2 className="font-bold text-2xl">Sources</h2>
-        <ul className="">
-          {sourceLinks.map((item, i) => (
-            <li key={i}>
-              <a href={item.url} target="_blank" className="">
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="mb-5">
+          <p>
+            The CBDb was made as a fun side project for yolk00 to practice her
+            web development skills.
+          </p>
+          <p>
+            All content on this site is owned by their respective copyright
+            owners.
+          </p>
+          <p>
+            Here are more Cowboy Bebop resources for you to look into if you
+            enjoyed this site!
+          </p>
+        </div>
+        {/* <h2 className="font-bold text-2xl">Downloads</h2> */}
+        <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-y-5 md:gap-y-0">
+          <div className="md:col-start-1">
+            <h2 className="font-bold text-2xl">Fansite Links</h2>
+            <ul className="">
+              {fansiteLinks.map((item, i) => (
+                <li key={i}>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    className="hover:bg-black hover:text-white duration-150 ease-in-out"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-start-2">
+            <h2 className="font-bold text-2xl">Sources</h2>
+            <ul className="">
+              {sourceLinks.map((item, i) => (
+                <li key={i}>
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    className="hover:bg-black hover:text-white duration-150 ease-in-out"
+                  >
+                    {item.name}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </>
   );

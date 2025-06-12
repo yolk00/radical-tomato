@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { albumsData } from "@/data/musicData";
 import { useEffect, useRef, useState } from "react";
-import LoadingAnim from "../LoadingAnim";
+import LoadingAnim from "./LoadingAnim";
 
 export default function MusicSection({ epNum }: { epNum: number }) {
   const music = albumsData.filter((song) => song.episodes?.includes(epNum));
