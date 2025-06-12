@@ -1,22 +1,23 @@
 # Cowboy Bebop Db (CBDb)
 
-This is a fun R&D project made with the purpose to practice web layouts as well as RESTful APIs.
+This is a fun R&D project made to practice web layouts as well as RESTful APIs.
 
 Layouts are inspired by both [Line Animation Studio](https://thelinestudio.com/work/cowboy-bebop) for the Home page, and [Sturdy](https://sturdy.co/) for the Session(s) page(s).
+
+Content is populated using the [Cowboy Bebop Fanpage](https://cowboybebop.fandom.com/wiki/Main_Page) via the [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page), the [Jikan API](https://docs.api.jikan.moe/), and the Cowboy Bebop OST Collection via the [Internet Archive](https://archive.org/details/Cowboy-Bebop-OST-Collection).
 
 ## Things to fix
 
 - Session - header font size responsiveness
 - Home page video optimization (Mux? Blob?)
-- Remove credits page
 - Info - remove "Downloads" header (?)
-- Session - fix display for staff with multiple positions (?)
+- ~~Session - fix display for staff with multiple positions (?)~~
 - Session - small music player bugs
 
 ## Todo
 
 - Session - add buttons for prev / next episode
-- Sessions - scroll to top visibility animation
+- ~~Sessions - scroll to top visibility animation~~
 
 ## Future plans
 
