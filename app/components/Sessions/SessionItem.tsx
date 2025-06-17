@@ -11,12 +11,12 @@ export default async function SessionItem({
   episodeImagesArray,
 }: Episode) {
   // add zero to start of numbers with one integer
-  function padZero(length: number) {
-    let padded = "" + mal_id;
-    while (padded.length < length) {
-      padded = "0" + padded;
+  function formatEpNum(num: number) {
+    if (num < 10) {
+      return num.toString().padStart(2, "0");
+    } else {
+      return num;
     }
-    return padded;
   }
 
   const paddedIndex = mal_id - 1;
@@ -59,7 +59,7 @@ export default async function SessionItem({
             {new Date(aired).toISOString().split("T00:00:00.000Z")}
           </p>
         </div>
-        <p className="text-3xl">{padZero(2)}</p>
+        <p className="text-3xl">{formatEpNum(mal_id)}</p>
       </div>
     </Link>
   );
