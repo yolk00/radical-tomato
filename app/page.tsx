@@ -1,56 +1,35 @@
-import Image from "next/image";
-import mainImage from "@/public/cowboy_bebop_promo.jpg";
 import Link from "next/link";
+import BackgroundVideo from "next-video/background-video";
+import CowboyPromo from "@/videos/CowboyBebopHD_AdultSwimPromos_960x720_h264.mp4";
 
 export default function Home() {
   return (
     <main className="box-border">
-      {/* <div className="size-full rounded-smid overflow-hidden grid grid-cols-1 grid-rows-1"> */}
-      {/* <div className="h-screen rounded-smid overflow-hidden grid grid-cols-1 grid-rows-1 relative">
-        <div className="col-span-full row-span-full z-2 flex items-center justify-center">
-          <div className="w-100 h-100 p-5  text-white">
-            <p className="text-3xl">View</p>
-            <p className="text-3xl">Sessions</p>
-          </div>
+      <Link href="/sessions" className="peer">
+        <div className="view-session-btn absolute top-1/2 left-1/2 -translate-1/2 w-100 h-100 p-5 text-white z-2 mix-blend-difference hover:scale-90 duration-1000 ease-InOutCubic">
+          <p className="text-3xl">View</p>
+          <p className="text-3xl">Sessions</p>
         </div>
+      </Link>
+      {/* <div className="blue-blend bg-cowboy-blue mix-blend-color absolute inset-0 peer-hover:rounded-smid z-1 peer-hover:inset-3/200 duration-1000 ease-InOutCubic peer-hover:bg-transparent"></div> */}
+      <div className="blue-blend bg-cowboy-blue mix-blend-color absolute inset-0 z-1 duration-1000 ease-InOutCubic peer-hover:bg-transparent"></div>
 
-        <div className="col-span-full row-span-full z-1 flex items-center justify-center mix-blend-exclusion">
-          <div className="w-100 h-100 p-5 bg-cowboy-blue  text-white"></div>
-        </div>
+      {/* <div className="absolute top-1/2 left-1/2 -translate-1/2 z-1 flex items-center justify-center mix-blend-exclusion"> */}
+      <div className="absolute top-1/2 left-1/2 -translate-1/2 z-1 flex items-center justify-center invert mix-blend-hue backdrop-blur-lg peer-hover:invert-5 peer-hover:inset-shadow-2xs peer-hover:scale-90 shadow-black duration-1000 ease-InOutCubic">
+        <div className="w-100 h-100 p-5 bg-cowboy-rust text-white "></div>
+      </div>
 
-        <div className="bg-cowboy-blue mix-blend-color col-span-full row-span-full"></div>
-        <Image
-          src={mainImage}
-          alt="Jet, and Faye frantically lunge towards camera. Faye pushes past Spike who is eating ramen. Ed is in the background climbing the steps on all fours looking on quizically at the situation."
-          className="max-w-full h-auto col-span-full row-span-full"
-          // className="col-span-full row-span-full object-center"
-          // fill
+      <div className="grid grid-cols-1 grid-rows-1 h-screen w-auto -m-5 overflow-hidden">
+        <BackgroundVideo
+          src={CowboyPromo}
+          aria-label="video-player"
+          className="object-cover justify-self-center h-screen row-span-full col-span-full scale-152"
+          style={{ width: "960px" }}
+          // thumbnailTime={19}
         />
-      </div> */}
-      <div className="h-screen w-auto rounded-smid bg-cowboy-blue grid grid-cols-1 grid-rows-1 overflow-hidden">
-        <div className="col-span-full row-span-full z-3 flex items-center justify-center">
-          <Link href="/sessions">
-            <div className="lg:w-100 lg:h-100 md:w-75 md:h-75 w-50 h-50 p-5  text-white">
-              <p className="lg:text-3xl md:text-2xl text-xl">View</p>
-              <p className="lg:text-3xl md:text-2xl text-xl">Sessions</p>
-            </div>
-          </Link>
-        </div>
+      </div>
 
-        {/* would be easier to make this an svg and resize based on viewport ? */}
-        <div className="col-span-full row-span-full z-2 flex items-center justify-center mix-blend-exclusion">
-          <div className="lg:w-100 lg:h-100 md:w-75 md:h-75 w-50 h-50 p-5 bg-cowboy-blue  text-white"></div>
-        </div>
-
-        <div className="bg-cowboy-blue mix-blend-color col-span-full row-span-full rounded-smid z-1"></div>
-        {/* <Image
-          src={mainImage}
-          alt="Jet, and Faye frantically lunge towards camera. Faye pushes past Spike who is eating ramen. Ed is in the background climbing the steps on all fours looking on quizically at the situation."
-          className="rounded-smid object-cover h-screen col-span-full row-span-full"
-          width={1916}
-          height={1040}
-          // fill
-        /> */}
+      {/* <div className="video-container h-screen w-auto bg-cowboy-blue grid grid-cols-1 grid-rows-1 overflow-hidden -m-5  duration-1000 ease-InOutCubic">
         <video
           width="960"
           // height="720"
@@ -69,21 +48,21 @@ export default function Home() {
           />
           Your browser does not support the video tag.
         </video>
-        {/* <iframe
-          width="960"
-          // height="720"
-          // width="100%"
-          // height="100%"
-          src="https://www.youtube-nocookie.com/embed/qB9q7Zm-cvI?si=lcW2sBkuLbr8U3aM&amp;autoplay=1&mute=1&loop=1"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerPolicy="strict-origin-when-cross-origin"
-          // allowFullscreen
-          className="object-cover justify-self-center h-screen col-span-full row-span-full scale-150"
-          loading="lazy"
-        ></iframe> */}
-      </div>
+        <iframe
+      width="960"
+      // height="720"
+      // width="100%"
+      // height="100%"
+      src="https://www.youtube-nocookie.com/embed/qB9q7Zm-cvI?si=lcW2sBkuLbr8U3aM&amp;autoplay=1&mute=1&loop=1"
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      // allowFullscreen
+      className="object-cover justify-self-center h-screen col-span-full row-span-full scale-150"
+      loading="lazy"
+    ></iframe> 
+      </div> */}
     </main>
   );
 }
