@@ -13,51 +13,12 @@ import {
 
 export default function ScrollToTop() {
   const [scrollPosition, setScrollPosition] = useState(0);
+  const { scrollY } = useScroll();
 
-  const { scrollYProgress } = useScroll();
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Y Progress scroll: ", latest);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // console.log("Y Progress scroll: ", latest);
     setScrollPosition(latest);
   });
-
-  // const tl = new ScrollTimeline({
-  //   source: document.documentElement,
-  // });
-
-  // const scrollBtn = document.getElementById("scroll-btn");
-
-  // scrollBtn?.animate(
-  //   {
-  //     opacity: [0, 0, 1, 1],
-  //     transform: [
-  //       "translateY(50px)",
-  //       "translateY(50px)",
-  //       "translateY(0px)",
-  //       "translateY(0px)",
-  //     ],
-  //     offset: [0, 0.3, 0.35],
-  //     easing: ["ease-in", "ease-out"],
-  //   },
-  //   {
-  //     timeline: tl,
-  //     // timeline: new ScrollTimeline({
-  //     //   source: document?.documentElement,
-  //     // }),
-  //   }
-  // );
-
-  // console.log(tl);
-
-  // useEffect(() => {
-  //   const updatePosition = () => {
-  //     setScrollPosition(window.scrollY);
-  //   };
-
-  //   window.addEventListener("scroll", updatePosition);
-
-  //   return () => window.removeEventListener("scroll", updatePosition);
-  // });
 
   return (
     <div
@@ -68,7 +29,9 @@ export default function ScrollToTop() {
         <Image src={arrow} alt="upwards arrow to scroll to top of page" />
       </button> */}
       <AnimatePresence>
-        {scrollPosition > 0.45 && (
+        {/* TODO: change scroll to top point for mobile? */}
+        {/* or if height of page is greater than x ? */}
+        {scrollPosition > 1250 && (
           <motion.a
             initial={{ opacity: 0, y: "50px" }}
             animate={{ opacity: 1, y: "0px" }}

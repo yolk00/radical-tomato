@@ -7,6 +7,8 @@ import CreditsSection from "@/app/components/SessionPage/CreditsSection";
 import MusicSection from "@/app/components/SessionPage/MusicSection";
 import GallerySection from "@/app/components/SessionPage/GallerySection";
 import { EpisodeMatch } from "@/utils/types";
+import Link from "next/link";
+import ScrollToTop from "@/app/components/Sessions/ScrollToTop";
 
 // import { WikiTextParser } from "parse-wikitext";
 
@@ -37,6 +39,10 @@ export default async function Page({
   const epIndex = episodeMatch.findIndex(matches);
   const epNum = epIndex + 1;
   // console.log(epNum);
+
+  // nav to previous/next session
+  const prev = episodeMatch.at(epIndex - 1);
+  const next = episodeMatch.at(epIndex + 1);
 
   // function wikiNameFix(epName) {
   //   const fixesArr = [
@@ -141,18 +147,50 @@ export default async function Page({
   // console.log(cast);
   // console.log(credits);
 
+  function formatEpNum(num: number) {
+    if (num < 10) {
+      return num.toString().padStart(2, "0");
+    } else {
+      return num;
+    }
+  }
+
   return (
     <main className="mt-20">
       {/* <div className="top-section grid grid-cols-4 gap-x-4 mb-8"> */}
       {/* <div className="top-section grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-rows-1 md:grid-rows-2 gap-4 mb-8"> */}
       <div className="top-section grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-rows-1 md:auto-rows-min gap-4 mb-8">
-        <div className="episode-image col-start-1 col-end-2">
+        <div className="episode-image col-start-1 col-end-2 mb-5">
           <Image
             src={sessionImage}
             alt={sessionImageAltText}
             width={621}
             height={477}
           />
+          <div className="relative mt-5 text-xs">
+            {prev?.epNum < 26 && (
+              <div className="absolute left-0 hover:bg-black hover:text-white duration-150 ease-in-out">
+                <span className="no-underline">&#8249; </span>
+                <Link
+                  href={{ pathname: `/sessions/${prev?.title}` }}
+                  className="cursor-pointer underline"
+                >
+                  Previous Session
+                </Link>
+              </div>
+            )}
+            {next?.epNum > 0 && (
+              <div className="absolute right-0 hover:bg-black hover:text-white duration-150 ease-in-out">
+                <Link
+                  href={{ pathname: `/sessions/${next?.title}` }}
+                  className="cursor-pointer underline"
+                >
+                  Next Session
+                </Link>
+                <span> &#8250;</span>
+              </div>
+            )}
+          </div>
         </div>
         <div className="lg:col-start-2 lg:col-end-5 md:col-start-2 md:col-end-3 sm:col-start-1 sm:col-end-2">
           <h1 className="text-3xl">{title}</h1>
@@ -178,6 +216,7 @@ export default async function Page({
         <MusicSection epNum={epNum} />
         <GallerySection title={decodedId} />
       </div>
+      <ScrollToTop />
     </main>
   );
 }

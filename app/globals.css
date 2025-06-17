@@ -7,6 +7,8 @@
 
 @theme {
   --color-cowboy-blue: #326ec5;
+  --color-cowboy-rust: #c58932;
+  --ease-InOutCubic: cubic-bezier(0.65, 0, 0.35, 1);
   --radius-smid: 0.313rem;
   --spacing-cowboy-width: calc(100vw - 1.25rem);
   --spacing-cowboy-height: calc(100vh - 1.25rem);
@@ -48,32 +50,6 @@ input[type="range"]::-webkit-slider-thumb {
     clip-path: inset(0 -0.4em 0 0);
   }
 }
-
-/* SCROLL TO TOP BUTTON */
-/* FIXME: not working in safari and firefox? add webkit? */
-/* animation-timeline not compatible in ff & saf ... */
-/* @keyframes reveal {
-  0% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  30% {
-    opacity: 0;
-    transform: translateY(50px);
-  }
-  35% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-}
-#scroll-btn {
-  animation: reveal linear;
-  animation-timeline: scroll();
-} */
 
 /* @media (prefers-color-scheme: dark) {
   :root {
