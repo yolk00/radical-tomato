@@ -9,20 +9,21 @@ Content is populated using the [Cowboy Bebop Fanpage](https://cowboybebop.fandom
 ## Things to fix
 
 - Session - header font size responsiveness
-- Home page video optimization (Mux? Blob?)
-- Info - remove "Downloads" header (?)
+- ~~Home page video optimization (Mux? Blob?)~~~~
 - ~~Session - fix display for staff with multiple positions (?)~~
 - Session - small music player bugs
+- Main session button backdrop blur Safari/Firefox (?)
 
 ## Todo
 
-- Session - add buttons for prev / next episode
+- ~~Session - add buttons for prev / next episode~~
 - ~~Sessions - scroll to top visibility animation~~
 
 ## Future plans
 
 - Animations (?)
 - Gallery lightbox
+- Remove next-view-transitions (?)
 
 ![CBDb Home page](public/cbdb_home.png)
 ![CBDb Sessions page](public/cbdb_sessions.png)
