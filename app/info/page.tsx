@@ -1,3 +1,5 @@
+import TempLoading from "../components/TempLoading";
+
 export default function Page() {
   const sourceLinks = [
     {
@@ -41,7 +43,8 @@ export default function Page() {
   ];
   return (
     <>
-      <h1 className="uppercase lg:text-[16rem] md:text-[12rem] text-8xl font-bold mt-50 lg:mb-4 md:mb-6 mb-8">
+      {/* <TempLoading /> */}
+      <h1 className="mt-50 mb-8 text-8xl font-bold uppercase md:mb-6 md:text-[12rem] lg:mb-4 lg:text-[16rem]">
         Info
       </h1>
       <div>
@@ -61,16 +64,16 @@ export default function Page() {
           </p>
         </div>
         {/* <h2 className="font-bold text-2xl">Downloads</h2> */}
-        <div className="grid grid-cols-1 md:grid-cols-2 auto-rows-auto gap-y-5 md:gap-y-0">
+        <div className="grid auto-rows-auto grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-y-0">
           <div className="md:col-start-1">
-            <h2 className="font-bold text-2xl">Fansite Links</h2>
+            <h2 className="text-2xl font-bold">Fansite Links</h2>
             <ul className="">
               {fansiteLinks.map((item, i) => (
                 <li key={i}>
                   <a
                     href={item.url}
                     target="_blank"
-                    className="hover:bg-black hover:text-white duration-150 ease-in-out"
+                    className="duration-150 ease-in-out hover:bg-black hover:text-white"
                   >
                     {item.name}
                   </a>
@@ -79,14 +82,14 @@ export default function Page() {
             </ul>
           </div>
           <div className="md:col-start-2">
-            <h2 className="font-bold text-2xl">Sources</h2>
+            <h2 className="text-2xl font-bold">Sources</h2>
             <ul className="">
               {sourceLinks.map((item, i) => (
                 <li key={i}>
                   <a
                     href={item.url}
                     target="_blank"
-                    className="hover:bg-black hover:text-white duration-150 ease-in-out"
+                    className="duration-150 ease-in-out hover:bg-black hover:text-white"
                   >
                     {item.name}
                   </a>
