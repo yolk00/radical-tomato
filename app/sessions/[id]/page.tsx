@@ -90,7 +90,7 @@ export default async function Page({
     `https://api.jikan.moe/v4/anime/1/episodes/${epNum}`,
     {
       cache: "force-cache",
-    }
+    },
   );
   const jikanEpJson = await jikanData.json();
   const { synopsis } = jikanEpJson.data;
@@ -121,7 +121,7 @@ export default async function Page({
   const wtfIdFix =
     id == "Jamming%20with%20Edward" ? "Jamming%20With%20Edward" : id;
   const doc = await wtf.fetch(
-    `https://cowboybebop.fandom.com/wiki/${wtfIdFix}`
+    `https://cowboybebop.fandom.com/wiki/${wtfIdFix}`,
   );
   // console.log(doc);
   // const sec = doc?.section("Credits").text();
@@ -159,7 +159,7 @@ export default async function Page({
     <main className="mt-20">
       {/* <div className="top-section grid grid-cols-4 gap-x-4 mb-8"> */}
       {/* <div className="top-section grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-rows-1 md:grid-rows-2 gap-4 mb-8"> */}
-      <div className="top-section grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-rows-1 md:auto-rows-min gap-4 mb-8">
+      <div className="top-section mb-8 grid gap-4 sm:grid-cols-1 md:auto-rows-min md:grid-cols-2 lg:grid-cols-4 lg:grid-rows-1">
         <div className="episode-image col-start-1 col-end-2 mb-5">
           <Image
             src={sessionImage}
@@ -169,7 +169,7 @@ export default async function Page({
           />
           <div className="relative mt-5 text-xs">
             {prev?.epNum < 26 && (
-              <div className="absolute left-0 hover:bg-black hover:text-white duration-150 ease-in-out">
+              <div className="absolute left-0 duration-150 ease-in-out hover:bg-black hover:text-white">
                 <span className="no-underline">&#8249; </span>
                 <Link
                   href={{ pathname: `/sessions/${prev?.title}` }}
@@ -180,7 +180,7 @@ export default async function Page({
               </div>
             )}
             {next?.epNum > 0 && (
-              <div className="absolute right-0 hover:bg-black hover:text-white duration-150 ease-in-out">
+              <div className="absolute right-0 duration-150 ease-in-out hover:bg-black hover:text-white">
                 <Link
                   href={{ pathname: `/sessions/${next?.title}` }}
                   className="cursor-pointer underline"
@@ -192,26 +192,26 @@ export default async function Page({
             )}
           </div>
         </div>
-        <div className="lg:col-start-2 lg:col-end-5 md:col-start-2 md:col-end-3 sm:col-start-1 sm:col-end-2">
+        <div className="sm:col-start-1 sm:col-end-2 md:col-start-2 md:col-end-3 lg:col-start-2 lg:col-end-5">
           <h1 className="text-3xl">{title}</h1>
           {/* <h1 className="text-3xl">title</h1> */}
           {/* <p className="text-sm text-neutral-600">
             {new Date(aired).toISOString().split("T00:00:00.000Z")}
           </p> */}
-          <p className="text-neutral-600 mb-3">Air Date: {airDate}</p>
-          <p className="text-sm mb-3">{synopsis}</p>
+          <p className="mb-3 text-neutral-600">Air Date: {airDate}</p>
+          <p className="mb-3 text-sm">{synopsis}</p>
           <div className="block md:hidden lg:block">
             <CreditsSection epNum={epNum} />
           </div>
         </div>
-        <div className="hidden md:block lg:hidden col-start-1 col-span-full">
+        <div className="col-span-full col-start-1 hidden md:block lg:hidden">
           <CreditsSection epNum={epNum} />
         </div>
         {/* <div className="col-start-2 col-end-4">
           directors writers japanese cast english cast
         </div> */}
       </div>
-      <div className="bottom-section grid md:grid-cols-2 grid-cols-1 gap-5">
+      <div className="bottom-section grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* <MusicSection songs={songs} epNum={epNum} /> */}
         <MusicSection epNum={epNum} />
         <GallerySection title={decodedId} />

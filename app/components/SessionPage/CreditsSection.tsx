@@ -20,17 +20,17 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
 
   // creates an array of characters in current episode
   const episodeCast = characterEpisodesList.filter((member) =>
-    member.episodes.includes(epNum)
+    member.episodes.includes(epNum),
   );
   // const charNames = episodeCast.map((character) => character.name);
   // console.log(episodeCast);
 
   // TODO: create a function to display all current ep positions of a staff member (if multiple available)
   const episodeDirector: StaffMatch[] = staffMatch.filter(
-    (member: StaffMatch) => member.epDirector?.includes(epNum)
+    (member: StaffMatch) => member.epDirector?.includes(epNum),
   );
   const episodeWriter: StaffMatch[] = staffMatch.filter((member: StaffMatch) =>
-    member.screenwriter?.includes(epNum)
+    member.screenwriter?.includes(epNum),
   );
 
   const castCompleteData = episodeCast.reduce(
@@ -42,7 +42,7 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
       });
       return accumulator;
     },
-    []
+    [],
   );
   // console.log(castCompleteData);
 
@@ -70,12 +70,12 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
     const langIndex = castCompleteData.reduce(
       (accumulator: Array<number>, item) => {
         const index: number = item.voice_actors.findIndex(
-          (i) => i.language === lang
+          (i) => i.language === lang,
         );
         accumulator.push(index);
         return accumulator;
       },
-      []
+      [],
     );
 
     return langIndex;
@@ -141,9 +141,9 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
         </ul>
       </div>
       {/* <div className="col-start-2 col-end-3"> */}
-      <div className="md:col-start-2 md:col-end-3 col-start-1 col-end-2">
-        <h2 className="font-bold ">Japanese Cast</h2>
-        <ul className="text-sm col-start2 col-end-3">
+      <div className="col-start-1 col-end-2 md:col-start-2 md:col-end-3">
+        <h2 className="font-bold">Japanese Cast</h2>
+        <ul className="col-start2 col-end-3 text-sm">
           {castCompleteData.map((member, i) => (
             <li key={i} className="grid grid-cols-2">
               <span className="">
@@ -161,7 +161,7 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
         </ul>
       </div>
       {/* <div className="col-start-3 col-end-4"> */}
-      <div className="md:col-start-3 md:col-end-4 col-start-1 col-end-2">
+      <div className="col-start-1 col-end-2 md:col-start-3 md:col-end-4">
         <h2 className="font-bold">English Cast</h2>
         <ul className="text-sm">
           {castCompleteData.map((member, i) => (

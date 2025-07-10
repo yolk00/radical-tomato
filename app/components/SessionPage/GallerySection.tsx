@@ -20,7 +20,7 @@ export default async function GallerySection({ title }: { title: string }) {
       const newArr = accumulator.join(",").replace(/,/g, "%7C").split();
       return newArr;
     },
-    []
+    [],
   );
 
   // gets the image urls
@@ -28,20 +28,21 @@ export default async function GallerySection({ title }: { title: string }) {
 
   // filters out missing images
   const filteredImageUrls = imageUrls.filter(
-    (image) => image.missing === undefined
+    (image) => image.missing === undefined,
   );
   // console.log(imageUrls);
   return (
     <div className="photos-section">
-      <h2 className="text-2xl font-bold mb-2">Gallery</h2>
-      <div className="w-full md:columns-3 columns-2">
+      <h2 className="mb-2 text-2xl font-bold">Gallery</h2>
+      <div className="w-full columns-2 md:columns-3">
         {filteredImageUrls.map((image, i) => (
           <div key={i} className="mb-4">
             <Image
+              key={i}
               src={image.imageinfo[0].url}
               alt={`gallery image from ${title} on cowboybebop.fandom.com`}
-              width={846}
-              height={631}
+              width="846"
+              height="631"
             />
           </div>
         ))}

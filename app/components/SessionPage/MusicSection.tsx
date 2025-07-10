@@ -116,7 +116,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
         })
         .catch((error) => {
           console.log(
-            "Error: Previous song was interrupted; Loading selected song."
+            "Error: Previous song was interrupted; Loading selected song.",
           );
         });
     } else {
@@ -179,14 +179,14 @@ export default function MusicSection({ epNum }: { epNum: number }) {
   // next track
   function handleNext() {
     setSongIndex((prevState) =>
-      prevState >= music.length - 1 ? 0 : prevState + 1
+      prevState >= music.length - 1 ? 0 : prevState + 1,
     );
   }
 
   // previous track
   function handlePrev() {
     setSongIndex((prevSate) =>
-      prevSate <= 0 ? music.length - 1 : prevSate - 1
+      prevSate <= 0 ? music.length - 1 : prevSate - 1,
     );
   }
 
@@ -256,7 +256,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
 
   return (
     <div className="music-section">
-      <h2 className="text-2xl font-bold mb-2">Music</h2>
+      <h2 className="mb-2 text-2xl font-bold">Music</h2>
       <audio
         ref={audioRef}
         src={music[songIndex].link}
@@ -273,12 +273,12 @@ export default function MusicSection({ epNum }: { epNum: number }) {
             />
           </div>
         </div>
-        <div className="player-right-side flex flex-col gap-4 w-full">
+        <div className="player-right-side flex w-full flex-col gap-4">
           <div className="controls-info-container flex gap-4">
             <div className="controls flex flex-col justify-between">
               <button
                 onClick={handlePlayPause}
-                className="border rounded-xs size-14 relative cursor-pointer"
+                className="relative size-14 cursor-pointer rounded-xs border"
               >
                 {isPlaying ? (
                   <span className="text-3xl">⏸&#xFE0E;</span>
@@ -290,13 +290,13 @@ export default function MusicSection({ epNum }: { epNum: number }) {
               <div className="flex justify-around">
                 <button
                   onClick={handlePrev}
-                  className="font-bold cursor-pointer"
+                  className="cursor-pointer font-bold"
                 >
                   ⏮&#xFE0E;
                 </button>
                 <button
                   onClick={handleNext}
-                  className="font-bold cursor-pointer"
+                  className="cursor-pointer font-bold"
                 >
                   ⏭&#xFE0E;
                 </button>
@@ -305,7 +305,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
             <div className="info-container w-full">
               <p className="font-bold">{music[songIndex].name}</p>
               <p className="text-sm">{music[songIndex].album}</p>
-              <div className="music-player-time flex gap-1 items-center">
+              <div className="music-player-time flex items-center gap-1">
                 <span className="current-time text-xs">
                   {formatDuration(currentTime)}
                 </span>
@@ -322,7 +322,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
                   max={`${duration}`}
                   value={currentTime}
                   onChange={handleSeek}
-                  className="appearance-none w-full h-2.25 border bg-neutral-100 cursor-pointer overflow-hidden"
+                  className="h-2.25 w-full cursor-pointer appearance-none overflow-hidden border bg-neutral-100"
                 />
               </div>
             </div>
@@ -338,11 +338,11 @@ export default function MusicSection({ epNum }: { epNum: number }) {
                   }}
                   className={
                     i === songIndex
-                      ? "cursor-pointer text-sm border-t py-1 hover:bg-neutral-200 hover:px-2 duration-70 font-bold"
-                      : "cursor-pointer text-sm border-t py-1 hover:bg-neutral-200 hover:px-2 duration-70"
+                      ? "cursor-pointer border-t py-1 text-sm font-bold duration-70 hover:bg-neutral-200 hover:px-2"
+                      : "cursor-pointer border-t py-1 text-sm duration-70 hover:bg-neutral-200 hover:px-2"
                   }
                 >
-                  <button className="text-left cursor-pointer">
+                  <button className="cursor-pointer text-left">
                     {song.name}
                   </button>
                 </li>

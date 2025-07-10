@@ -3,12 +3,14 @@ import ScrollToTop from "../components/Sessions/ScrollToTop";
 import { GetEpisodeImages } from "@/lib/getData";
 import { Episode } from "@/utils/types";
 
+import { Suspense } from "react";
+
 export default async function Page() {
   const episodesData = await fetch(
     "https://api.jikan.moe/v4/anime/1/episodes",
     {
       cache: "force-cache",
-    }
+    },
   )
     .then((res) => res.json())
     .then((data) => data.data);
@@ -39,22 +41,28 @@ export default async function Page() {
   // console.log(episodesData);
 
   return (
-    <div className="w-full flex flex-col" id="top">
+    <div className="flex w-full flex-col" id="top">
       {/* <h1 className="uppercase lg:text-[16rem] md:text-[12rem] sm:text-8xl font-bold mt-50 lg:mb-4 md:mb-6 mb-8"> */}
-      <h1 className="uppercase lg:text-[12rem] md:text-[8rem] sm:text-9xl font-bold mt-50 lg:mb-4 md:mb-6 mb-8">
+      <h1 className="mt-50 mb-8 font-bold uppercase sm:text-9xl md:mb-6 md:text-[8rem] lg:mb-4 lg:text-[12rem]">
         Sessions
       </h1>
-      <div className="grid grid-cols-(--grid-gallery) gap-x-0.5 -m-5">
+      <div className="-m-5 grid grid-cols-(--grid-gallery) gap-x-0.5">
         {/* <div className="grid grid-cols-4 w-screen gap-x-2 -m-5"> */}
         {episodesData.map((episode: Episode) => (
-          <SessionItem
-            key={episode.mal_id}
-            {...episode}
-            episodeImagesArray={episodeImagesArray}
-          />
+          <Suspense key={episode.mal_id} fallback={<Skeleton />}>
+            <SessionItem
+              // key={episode.mal_id}
+              {...episode}
+              episodeImagesArray={episodeImagesArray}
+            />
+          </Suspense>
         ))}
       </div>
       <ScrollToTop />
     </div>
   );
+}
+
+function Skeleton() {
+  return <div className="bg-cowboy-blue h-[28.75rem] w-full"></div>;
 }
