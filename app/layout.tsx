@@ -4,6 +4,10 @@ import "./globals.css";
 
 import Navbar from "./components/Navbar";
 
+import { ViewTransitions } from "next-view-transitions";
+import { NavigationEvents } from "./components/NavigationEvents";
+import { Suspense } from "react";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -25,13 +29,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased p-5`}
-      >
-        <Navbar />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} p-5 antialiased`}
+        >
+          <Navbar />
+          {children}
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }
