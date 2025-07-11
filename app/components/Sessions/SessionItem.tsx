@@ -1,9 +1,7 @@
 "use client";
 
-// import cvrImg from "@/public/cowboy_bebop_promo.jpg";
 import Image from "next/image";
 import Link from "next/link";
-// import { GetWikiExtract } from "@/lib/getData";
 import { Episode } from "@/utils/types";
 
 import { motion } from "motion/react";
@@ -28,40 +26,25 @@ export default function SessionItem({
 
   const sessionImage = episodeImagesArray[paddedIndex].url;
 
-  // const lowercaseTitle = title.toLowerCase();
-
-  // console.log(title);
-
   const MotionLink = motion.create(Link);
 
   return (
     <MotionLink
       href={{
         pathname: `/sessions/${title}`,
-        // query: {
-        //   id: mal_id,
-        // },
-        // query: {
-        //   title: mal_id,
-        // },
       }}
-      // className="w-[22.5rem] h-[28.75rem]"
       className="group h-[28.75rem] w-full"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{
         duration: 0.3,
-        // ease: [0.33, 1, 0.68, 1],
         ease: [0.25, 1, 0.5, 1],
-        // ease: "anticipate",
         delay: 0.165 * mal_id,
       }}
     >
       <div className="h-[315px] w-full">
         <Image
           src={sessionImage}
-          // src={cvrImg}
-          // alt={sessionImageAltText}
           alt="alt text"
           width={621}
           height={477}

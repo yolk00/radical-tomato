@@ -1,5 +1,3 @@
-// import { error } from "console";
-
 export async function GetEpisodes() {
   return fetch("https://api.jikan.moe/v4/anime/1/episodes", {
     cache: "force-cache",
@@ -7,10 +5,6 @@ export async function GetEpisodes() {
     .then((res) => res.json())
     .then((data) => data.data);
 }
-
-// export async function GetEpisodeById(episodeId) {
-//     const apiUrl = `https://api.jikan.moe/v4/anime/1/episodes/${episodeId}`
-// }
 
 type FixedUrl = {
   original: string;
@@ -87,7 +81,7 @@ export async function GetEpisodeImages() {
     `https://cowboybebop.fandom.com/api.php?action=query&format=json&origin=*&list=allimages&formatversion=2&aisort=name&aifrom=Session1.jpg&aito=Session9.jpg&ailimit=26`,
     {
       cache: "force-cache",
-    }
+    },
   )
     .then((res) => res.json())
     .catch((error) => {
@@ -97,7 +91,6 @@ export async function GetEpisodeImages() {
 
   const imageArray = sessionImages.query.allimages;
   // console.log(imageArray);
-  // const imageArray = "hello";
 
   return imageArray;
 }
@@ -107,7 +100,7 @@ export async function GetCharacters() {
     "https://api.jikan.moe/v4/anime/1/characters",
     {
       cache: "force-cache",
-    }
+    },
   )
     .then((res) => res.json())
     .then((data) => data.data)
@@ -160,10 +153,6 @@ export async function GetGalleryImageNames(param: string) {
 
   return imageNames;
 }
-
-// function ReplaceComma() {
-//   if("")
-// }
 
 export async function GetGalleryImageUrl(param: string) {
   const wikiEndpoint = `https://cowboybebop.fandom.com/api.php`;

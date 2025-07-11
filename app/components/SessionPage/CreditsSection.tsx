@@ -9,23 +9,12 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
   // const charJson = require("@/data/characterData.json");
   // const charData = charJson.data;
 
-  // const episodeCast = [];
-  // characterEpisodesList.forEach((member) => {
-  //   const isInEpisode: boolean = member.episodes.includes(epNum);
-  //   if (isInEpisode) {
-  //     episodeCast.push(member);
-  //   }
-  // });
-  // console.log(episodeCast);
-
   // creates an array of characters in current episode
   const episodeCast = characterEpisodesList.filter((member) =>
     member.episodes.includes(epNum),
   );
-  // const charNames = episodeCast.map((character) => character.name);
-  // console.log(episodeCast);
 
-  // TODO: create a function to display all current ep positions of a staff member (if multiple available)
+  // TODO: (?) create a function to display all current ep positions of a staff member (if multiple available)
   const episodeDirector: StaffMatch[] = staffMatch.filter(
     (member: StaffMatch) => member.epDirector?.includes(epNum),
   );
@@ -99,7 +88,6 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
   // console.log(writerIndex);
 
   return (
-    // <div className="grid grid-cols-3 grid-rows-1 gap-x-4">
     <div className="grid grid-cols-subgrid grid-rows-1 gap-4">
       <div className="col-start-1 col-end-2">
         <h2 className="font-bold">Staff</h2>
@@ -140,17 +128,12 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
           </li>
         </ul>
       </div>
-      {/* <div className="col-start-2 col-end-3"> */}
       <div className="col-start-1 col-end-2 md:col-start-2 md:col-end-3">
         <h2 className="font-bold">Japanese Cast</h2>
         <ul className="col-start2 col-end-3 text-sm">
           {castCompleteData.map((member, i) => (
             <li key={i} className="grid grid-cols-2">
               <span className="">
-                {/* {member.voice_actors[0].language === "Japanese"
-                  ? member.voice_actors[0].person.name
-                  : member.voice_actors[1].person.name} */}
-                {/* {member.voice_actors[jpnCastIndexArr[i]].person.name} */}
                 {jpnCastIndexArr[i] === -1
                   ? "None credited"
                   : member.voice_actors[jpnCastIndexArr[i]].person.name}
@@ -160,7 +143,6 @@ export default async function CreditsSection({ epNum }: { epNum: number }) {
           ))}
         </ul>
       </div>
-      {/* <div className="col-start-3 col-end-4"> */}
       <div className="col-start-1 col-end-2 md:col-start-3 md:col-end-4">
         <h2 className="font-bold">English Cast</h2>
         <ul className="text-sm">

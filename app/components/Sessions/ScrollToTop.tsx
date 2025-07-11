@@ -21,13 +21,7 @@ export default function ScrollToTop() {
   });
 
   return (
-    <div
-      // className="self-end"
-      className="fixed right-5 bottom-5"
-    >
-      {/* <button className="size-[50px] bg-black drop-shadow-sm text-white rounded-smid flex justify-center cursor-pointer">
-        <Image src={arrow} alt="upwards arrow to scroll to top of page" />
-      </button> */}
+    <div className="fixed right-5 bottom-5">
       <AnimatePresence>
         {/* TODO: change scroll to top point for mobile? */}
         {/* or if height of page is greater than x ? */}
@@ -39,7 +33,7 @@ export default function ScrollToTop() {
             transition={{ duration: 0.65, ease: [0.65, 0, 0.35, 1] }}
             href="#top"
             id="scroll-btn"
-            className="rounded-smid flex size-[50px] cursor-pointer justify-center bg-black text-white drop-shadow-sm"
+            className="flex size-[50px] cursor-pointer justify-center rounded-smid bg-black text-white drop-shadow-sm"
           >
             <Image src={arrow} alt="upwards arrow to scroll to top of page" />
           </motion.a>

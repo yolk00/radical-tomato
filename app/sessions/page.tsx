@@ -14,8 +14,6 @@ export default async function Page() {
   )
     .then((res) => res.json())
     .then((data) => data.data);
-  // const episodesData = await data.json();
-  // const episodesData = await GetEpisodes();
 
   const fetchedImagesArray = await GetEpisodeImages();
 
@@ -42,19 +40,13 @@ export default async function Page() {
 
   return (
     <div className="flex w-full flex-col" id="top">
-      {/* <h1 className="uppercase lg:text-[16rem] md:text-[12rem] sm:text-8xl font-bold mt-50 lg:mb-4 md:mb-6 mb-8"> */}
       <h1 className="mt-50 mb-8 font-bold uppercase sm:text-9xl md:mb-6 md:text-[8rem] lg:mb-4 lg:text-[12rem]">
         Sessions
       </h1>
       <div className="-m-5 grid grid-cols-(--grid-gallery) gap-x-0.5">
-        {/* <div className="grid grid-cols-4 w-screen gap-x-2 -m-5"> */}
         {episodesData.map((episode: Episode) => (
           <Suspense key={episode.mal_id} fallback={<Skeleton />}>
-            <SessionItem
-              // key={episode.mal_id}
-              {...episode}
-              episodeImagesArray={episodeImagesArray}
-            />
+            <SessionItem {...episode} episodeImagesArray={episodeImagesArray} />
           </Suspense>
         ))}
       </div>
@@ -64,5 +56,5 @@ export default async function Page() {
 }
 
 function Skeleton() {
-  return <div className="bg-cowboy-blue h-[28.75rem] w-full"></div>;
+  return <div className="h-[28.75rem] w-full bg-cowboy-blue"></div>;
 }

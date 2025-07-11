@@ -1,4 +1,4 @@
-import TempLoading from "../components/TempLoading";
+// import TempLoading from "../components/TempLoading";
 
 export default function Page() {
   const sourceLinks = [
@@ -48,7 +48,6 @@ export default function Page() {
         Info
       </h1>
       <div>
-        {/* <h2>About CBDb</h2> */}
         <div className="mb-5">
           <p>
             The CBDb was made as a fun side project for yolk00 to practice her
@@ -63,7 +62,6 @@ export default function Page() {
             enjoyed this site!
           </p>
         </div>
-        {/* <h2 className="font-bold text-2xl">Downloads</h2> */}
         <div className="grid auto-rows-auto grid-cols-1 gap-y-5 md:grid-cols-2 md:gap-y-0">
           <div className="md:col-start-1">
             <h2 className="text-2xl font-bold">Fansite Links</h2>

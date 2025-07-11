@@ -5,7 +5,7 @@ import CowboyPromo from "@/videos/CowboyBebopHD_AdultSwimPromos_960x720_h264.mp4
 export default function Home() {
   return (
     <main className="box-border">
-      {/* TODO: would need to make this a seprate component to use transition router */}
+      {/* would need to make this a seprate component to use transition router */}
       <Link href="/sessions" className="peer">
         <div className="view-session-btn absolute top-1/2 left-1/2 z-2 h-75 w-75 -translate-1/2 p-5 text-white mix-blend-difference duration-1000 ease-InOutCubic hover:scale-90 md:h-100 md:w-100">
           <p className="text-2xl md:text-3xl">View</p>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { albumsData } from "@/data/musicData";
-import { useEffect, useRef, useState } from "react";
+import { ChangeEvent, useEffect, useRef, useState } from "react";
 import LoadingAnim from "./LoadingAnim";
 
 export default function MusicSection({ epNum }: { epNum: number }) {
@@ -30,18 +30,18 @@ export default function MusicSection({ epNum }: { epNum: number }) {
 
   // general audio settings
   if (audioRef.current != null) {
-    audioRef.current.onloadstart = (e) => {
+    audioRef.current.onloadstart = (e: ChangeEvent<HTMLInputElement>) => {
       console.log("load start");
       setIsLoading(true);
       setCanPlay(false);
       handleReset();
     };
-    audioRef.current.onloadeddata = (e) => {
+    audioRef.current.onloadeddata = (e: ChangeEvent<HTMLInputElement>) => {
       console.log("data loaded");
       setIsLoading(false);
       setCanPlay(true);
     };
-    audioRef.current.oncanplay = (e) => {
+    audioRef.current.oncanplay = (e: ChangeEvent<HTMLInputElement>) => {
       console.log("can play/start");
       setCanPlay(true);
       // if paused before init load complete, pause; else play
@@ -60,7 +60,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
   }
 
   // seek to specific time in audio
-  function handleSeek(e) {
+  function handleSeek(e: ChangeEvent<HTMLInputElement>) {
     audioRef.current.currentTime = e.target.value;
     setCurrentTime(e.target.value);
   }
@@ -81,7 +81,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
     }
   }
 
-  // handle stopped playlist
+  // handle stopped playlist ; temp unused (?)
   function handleStoppedPlaylist() {
     // handleReset();
 
@@ -95,7 +95,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
           handleReset();
           console.log("paused to stop");
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.log("error: previous play was interrupted");
         });
     }
@@ -114,7 +114,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
           setIsPausedBeforeLoad(false);
           console.log("playing selected song");
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.log(
             "Error: Previous song was interrupted; Loading selected song.",
           );
@@ -139,7 +139,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
           setIsPlaying(false);
           console.log("safely paused");
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.log("error: play was interruped");
         });
     }
@@ -161,7 +161,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
     }
 
     // determines if audio is currently playing (does not trigger on initial page load w autoplay enabled)
-    audioRef.current.onplaying = (e) => {
+    audioRef.current.onplaying = (e: ChangeEvent<HTMLInputElement>) => {
       setIsPlaying(true);
       console.log("audio is playing");
     };
@@ -193,7 +193,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
   // adjust code if want to add "loop" playlist toggle
   // continuous play
   function handleContinuousPlay() {
-    audioRef.current.onended = (e) => {
+    audioRef.current.onended = (e: ChangeEvent<HTMLInputElement>) => {
       if (songIndex < music.length - 1) {
         handleNext();
         console.log("playing next song");

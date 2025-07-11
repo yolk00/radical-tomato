@@ -25,7 +25,8 @@
 *.pem
 notes.txt
 /utils/format.html
-/data
+/data/characterData.json
+/data/episodeList.ts
 
 # debug
 npm-debug.log*

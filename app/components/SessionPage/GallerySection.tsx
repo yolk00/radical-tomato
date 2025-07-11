@@ -28,14 +28,14 @@ export default async function GallerySection({ title }: { title: string }) {
 
   // filters out missing images
   const filteredImageUrls = imageUrls.filter(
-    (image) => image.missing === undefined,
+    (image: GalleryImageUrl) => image.missing === undefined,
   );
   // console.log(imageUrls);
   return (
     <div className="photos-section">
       <h2 className="mb-2 text-2xl font-bold">Gallery</h2>
       <div className="w-full columns-2 md:columns-3">
-        {filteredImageUrls.map((image, i) => (
+        {filteredImageUrls.map((image: GalleryImageUrl, i: number) => (
           <div key={i} className="mb-4">
             <Image
               key={i}
