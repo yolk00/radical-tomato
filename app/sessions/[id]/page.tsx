@@ -9,6 +9,37 @@ import { EpisodeMatch } from "@/utils/types";
 import Link from "next/link";
 import ScrollToTop from "@/app/components/Sessions/ScrollToTop";
 
+import { Metadata, ResolvedMetadata } from "next";
+
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata(
+  { params }: Props,
+  parent: ResolvedMetadata,
+): Promise<Metadata> {
+  // read route params
+  const { id } = await params;
+
+  // fetch data
+  // TODO: use fetch link to get session images etc ; https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
+  // const product = await fetch(`https://.../${id}`).then(
+  //   (res) => res.json(),
+  // );
+
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: decodeURI(id),
+    description: `The synopsis, music, and images from ${id}`,
+    openGraph: {
+      images: [...previousImages],
+    },
+  };
+}
+
 // export default function Page({ params }: { params: Promise<{ id: string }> }) {
 export default async function Page({
   params,

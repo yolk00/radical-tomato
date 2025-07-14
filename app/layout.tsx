@@ -19,8 +19,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cowboy Bebop dB",
-  description: "dB of Cowboy Bebop episodes and music.",
+  title: {
+    template: "%s | Radical Tomato",
+    default: "Radical Tomato",
+  },
+  description:
+    "Resource for finding out more on the episodes and music of Cowboy Bebop (anime).",
+  // description: "dB of Cowboy Bebop episodes and music.",
+  openGraph: {
+    type: "website",
+    title: "Radical Tomato",
+    description:
+      "Resource for finding out more on the episodes and music of Cowboy Bebop (anime).",
+    siteName: "Radical Tomato",
+  },
 };
 
 export default function RootLayout({

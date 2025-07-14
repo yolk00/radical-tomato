@@ -1,4 +1,9 @@
 // import TempLoading from "../components/TempLoading";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Info",
+};
 
 export default function Page() {
   const sourceLinks = [
@@ -50,8 +55,20 @@ export default function Page() {
       <div>
         <div className="mb-5">
           <p>
-            The CBDb was made as a fun side project for yolk00 to practice her
-            web development skills.
+            <span className="italic">Radical</span> as in Edward.{" "}
+            <span className="italic">Tomato</span> as in the name of Ed&#39;s
+            best friend and computer.
+          </p>
+          <p>
+            Radical Tomato was made as a fun side project for{" "}
+            <a
+              href="https://jeanelle.dev"
+              target="_blank"
+              className="underline duration-150 ease-in-out hover:bg-black hover:text-white"
+            >
+              yolk00
+            </a>{" "}
+            to practice her web development skills.
           </p>
           <p>
             All content on this site is owned by their respective copyright

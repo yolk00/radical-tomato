@@ -5,6 +5,12 @@ import { Episode } from "@/utils/types";
 
 import { Suspense } from "react";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sessions",
+};
+
 export default async function Page() {
   const episodesData = await fetch(
     "https://api.jikan.moe/v4/anime/1/episodes",

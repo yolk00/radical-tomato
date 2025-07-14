@@ -1,4 +1,4 @@
-# Cowboy Bebop Db (CBDb)
+# Radical Tomato (RT)
 
 This is a fun R&D project made to practice web layouts as well as RESTful APIs.
 
@@ -9,7 +9,7 @@ Content is populated using the [Cowboy Bebop Fanpage](https://cowboybebop.fandom
 ## Things to fix
 
 - Session - header font size responsiveness
-- ~~Home page video optimization (Mux? Blob?)~~~~
+- ~~Home page video optimization (Mux? Blob?)~~
 - ~~Session - fix display for staff with multiple positions (?)~~
 - Session - small music player bugs
 - Main session button backdrop blur Safari/Firefox (?)
@@ -25,6 +25,6 @@ Content is populated using the [Cowboy Bebop Fanpage](https://cowboybebop.fandom
 - Gallery lightbox
 - Remove next-view-transitions (?)
 
-![CBDb Home page](public/cbdb_home.png)
-![CBDb Sessions page](public/cbdb_sessions.png)
-![CBDb Session page](public/cbdb_session_ab.png)
+![RT Home page](public/RT_home.png)
+![RT Sessions page](public/RT_sessions.png)
+![RT Session page](public/RT_session_ab.png)
