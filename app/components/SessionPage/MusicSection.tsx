@@ -62,7 +62,7 @@ export default function MusicSection({ epNum }: { epNum: number }) {
   // seek to specific time in audio
   function handleSeek(e: ChangeEvent<HTMLInputElement>) {
     audioRef.current.currentTime = e.target.value;
-    setCurrentTime(e.target.value);
+    setCurrentTime(parseInt(e.target.value));
   }
 
   // update current time and duration

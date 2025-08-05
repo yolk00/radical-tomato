@@ -19,7 +19,9 @@ export default async function GallerySection({ title }: { title: string }) {
       accumulator.push(img.title);
 
       // replaces commas with %7C "spaces" for param query
-      const newArr = accumulator.join(",").replace(/,/g, "%7C").split();
+      // const newArr = accumulator.join(",").replace(/,/g, "%7C").split();
+      const newArr = [accumulator.join(",").replace(/,/g, "%7C")];
+
       return newArr;
     },
     [],
