@@ -22,8 +22,8 @@ Content is populated using the [Cowboy Bebop Fanpage](https://cowboybebop.fandom
 ## Future plans
 
 - Animations (?)
-- Gallery lightbox
-- Remove next-view-transitions (?)
+- ~~Gallery lightbox~~
+- ~~Remove next-view-transitions (?)~~
 
 ![RT Home page](public/RT_home.png)
 ![RT Sessions page](public/RT_sessions.png)
