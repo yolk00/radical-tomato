@@ -1,6 +1,5 @@
 "use client";
 
-import { useTransitionRouter } from "next-view-transitions";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "motion/react";
@@ -22,7 +21,6 @@ const navLinks = [
 
 export default function Navbar() {
   const pathname = usePathname();
-  const router = useTransitionRouter();
   return (
     <nav
       className={
@@ -54,48 +52,3 @@ export default function Navbar() {
     </nav>
   );
 }
-
-// animations for next-view-transitions
-const pageAnim = () => {
-  // anim for outgoing page
-  document.documentElement.animate(
-    [
-      {
-        opacity: 1,
-        scale: 1,
-        transform: "translateY(0)",
-        backgroundColor: "#000000",
-      },
-      {
-        opacity: 0.2,
-        scale: 0.9,
-        transfrom: "translateY(-100px)",
-        backgroundColor: "#00000050",
-      },
-    ],
-    {
-      duration: 1000,
-      easing: "cubic-bezier(0.65, 0, 0.35, 1)",
-      fill: "forwards",
-      pseudoElement: "::view-transition-old(root)",
-    },
-  );
-
-  // anim for incoming page
-  document.documentElement.animate(
-    [
-      {
-        transform: "translateY(100%)",
-      },
-      {
-        transfrom: "translateY(0)",
-      },
-    ],
-    {
-      duration: 1000,
-      easing: "cubic-bezier(0.65, 0, 0.35, 1)",
-      fill: "forwards",
-      pseudoElement: "::view-transition-new(root)",
-    },
-  );
-};
