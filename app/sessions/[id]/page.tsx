@@ -90,11 +90,11 @@ export default async function Page({
 
   // fixes "jamming with edward" fetch returning null | 'W' needs to be uppercase
   // FIXME: check pierrot le fou url
-  const wtfIdFix =
-    id == "Jamming%20with%20Edward" ? "Jamming%20With%20Edward" : id;
-  const doc = await wtf.fetch(
-    `https://cowboybebop.fandom.com/wiki/${wtfIdFix}`,
-  );
+  // const wtfIdFix =
+  //   id == "Jamming%20with%20Edward" ? "Jamming%20With%20Edward" : id;
+  // const doc = await wtf.fetch(
+  //   `https://cowboybebop.fandom.com/wiki/${wtfIdFix}`,
+  // );
 
   // function formatEpNum(num: number) {
   //   if (num < 10) {
