@@ -22,7 +22,7 @@ Content is populated using the [Cowboy Bebop Fanpage](https://cowboybebop.fandom
 ## Future plans
 
 - Animations (?)
-- Gallery lightbox
+- ~~Gallery lightbox~~
 - ~~Remove next-view-transitions (?)~~
 
 ![RT Home page](public/RT_home.png)

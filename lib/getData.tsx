@@ -164,7 +164,8 @@ export async function GetGalleryImageUrl(param: string) {
     "&titles=" +
     param + // tells the link which specific image files to extract
     "&formatversion=2" +
-    "&iiprop=url";
+    // "&iiprop=url";
+    "&iiprop=url%7Cdimensions";
 
   const wikiLink = wikiEndpoint + wikiParams;
 

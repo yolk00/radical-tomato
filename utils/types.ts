@@ -89,6 +89,9 @@ export type GalleryImageInfo = {
   url: string;
   descriptionurl: string;
   descriptionshorturl: string;
+  width: number;
+  height: number;
+  size: number;
 };
 
 export type GalleryImageUrl = {
@@ -97,7 +100,7 @@ export type GalleryImageUrl = {
   ns: number;
   title: string;
   imagerepository: string;
-  imageinfo?: GalleryImageInfo[];
+  imageinfo: GalleryImageInfo[];
 };
 
 export type SongSection = {

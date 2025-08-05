@@ -27,6 +27,7 @@ notes.txt
 /utils/format.html
 /data/characterData.json
 /data/episodeList.ts
+/.vscode
 
 # debug
 npm-debug.log*
