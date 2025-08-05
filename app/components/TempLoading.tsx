@@ -8,26 +8,8 @@ import re4 from "@/public/RE/RE innocent.svg";
 
 import { motion } from "motion/react";
 
-import { useState, useEffect } from "react";
-
 export default function TempLoading() {
   const faces = [re1, re2, re3, re4];
-
-  const [count, setCount] = useState(0);
-  const [index, setIndex] = useState(0);
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setIndex(count % faces.length);
-  //     setCount((prev) => prev + 1);
-  //     if (count === faces.length - 1) {
-  //       setCount(0);
-  //     }
-  //     //   console.log(faces[index]);
-  //   }, 500);
-
-  //   return () => clearInterval(timer);
-  // });
 
   const MotionImage = motion.create(Image);
 
@@ -41,22 +23,6 @@ export default function TempLoading() {
 
     return rndNum === 0 ? 1.5 : rndNum;
   }
-
-  function getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-  }
-
-  // const y = useTransform(time, [0, 500], [-3, 3]);
-  // const x = useTransform(time, [0, 500], [-3, 5]);
-
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setValX(getRandomInt(-3, 3));
-  //     setValY(getRandomInt(-3, 3));
-  //   }, 500);
-
-  //   return () => clearInterval(timer);
-  // });
 
   return (
     <div className="absolute inset-0 z-40 flex h-screen w-screen items-center justify-center bg-black text-lg text-white">

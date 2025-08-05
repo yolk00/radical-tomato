@@ -96,13 +96,13 @@ export default async function Page({
     `https://cowboybebop.fandom.com/wiki/${wtfIdFix}`,
   );
 
-  function formatEpNum(num: number) {
-    if (num < 10) {
-      return num.toString().padStart(2, "0");
-    } else {
-      return num;
-    }
-  }
+  // function formatEpNum(num: number) {
+  //   if (num < 10) {
+  //     return num.toString().padStart(2, "0");
+  //   } else {
+  //     return num;
+  //   }
+  // }
 
   return (
     <main className="mt-20">
