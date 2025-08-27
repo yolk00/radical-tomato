@@ -38,12 +38,14 @@ export default function GalleryImages({
         <Item<HTMLImageElement>
           key={i}
           // TODO: change open/close transition to "zoom" instead of "fade"
+          // ? currently doesn't work bc content can't access dimension info
           content={
             <Image
               src={image.imageinfo[0].url}
               alt={`Gallery image from ${title} sourced from cowboybebop.fandom.com`}
               width={image.imageinfo[0].width}
               height={image.imageinfo[0].height}
+              className="size-full"
             />
           }
           // content={
