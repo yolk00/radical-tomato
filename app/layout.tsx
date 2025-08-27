@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import { NavigationEvents } from "./components/NavigationEvents";
 import { Suspense } from "react";
 
+import { VideoLoadedProvider } from "@/utils/VideoLoadedContext";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -45,11 +47,21 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} p-5 antialiased`}
       >
         <Navbar />
-        {children}
-        <Suspense fallback={null}>
-          <NavigationEvents />
-        </Suspense>
+        <VideoLoadedProvider>
+          {children}
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
+        </VideoLoadedProvider>
       </body>
     </html>
+  );
+}
+
+function TempSquare() {
+  return (
+    <div className="absolute inset-0 flex">
+      <div className="size-100 bg-lime-300"></div>
+    </div>
   );
 }
