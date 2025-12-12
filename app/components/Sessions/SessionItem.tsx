@@ -4,7 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Episode } from "@/utils/types";
 
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
+import { useRef } from "react";
 
 // export default async function SessionItem({
 export default function SessionItem({
@@ -28,19 +29,38 @@ export default function SessionItem({
 
   const MotionLink = motion.create(Link);
 
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
   return (
     <MotionLink
       href={{
         pathname: `/sessions/${title}`,
       }}
       className="group h-[28.75rem] w-full"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{
-        duration: 0.3,
-        ease: [0.25, 1, 0.5, 1],
-        delay: 0.165 * mal_id,
-      }}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // transition={{
+      //   duration: 0.3,
+      //   ease: [0.25, 1, 0.5, 1],
+      //   delay: 0.165 * mal_id,
+      // }}
+      // ***** New Below
+      ref={ref}
+      initial={{ opacity: 0, y: 10 }}
+      animate={
+        isInView
+          ? {
+              opacity: 1,
+              y: 0,
+              transition: {
+                duration: 0.3,
+                ease: [0.25, 1, 0.5, 1],
+                delay: (mal_id % 5) * 0.1,
+              },
+            }
+          : null
+      }
     >
       <div className="h-[315px] w-full">
         <Image
